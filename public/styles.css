@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --dark-color-a: #16161a;
+    --dark-color-b: #242629;
+    --light-color: #fffffe;
+    --success-color: #7f5af0;
+    --error-color: #f44336;
+    --input-bg: #242629;
+    --input-text: #94a1b2;
+    --button-color: #7f5af0;
+    --button-hover: #6546cc;
+    --sidebar-width: 280px;
+    --sidebar-bg: #1e1e24;
+    --sidebar-hover: #2e2e36;
+    --sidebar-active: #3e3e48;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background: var(--dark-color-a);
+    color: var(--light-color);
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* New app container for sidebar layout */
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Friends sidebar styles */
+.friends-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #333;
+}
+
+.friends-header {
+    padding: 16px;
+    background-color: var(--dark-color-a);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.friends-header h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.friends-header button {
+    background: none;
+    border: none;
+    color: var(--light-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.friends-header button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.friends-search {
+    padding: 10px;
+    background-color: var(--dark-color-b);
+}
+
+.friends-search input {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: var(--input-bg);
+    border: none;
+    border-radius: 6px;
+    color: var(--light-color);
+    font-size: 0.9rem;
+}
+
+.friends-search input::placeholder {
+    color: var(--input-text);
+}
+
+.friends-search input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--success-color);
+}
+
+.friends-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.friend-item:hover {
+    background-color: var(--sidebar-hover);
+}
+
+.friend-item.active {
+    background-color: var(--sidebar-active);
+}
+
+.friend-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    background-color: var(--dark-color-b);
+}
+
+.friend-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.friend-info {
+    flex: 1;
+}
+
+.friend-name {
+    font-weight: 500;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.friend-source {
+    font-size: 0.8rem;
+    color: var(--input-text);
+}
+
+.loading-friends {
+    text-align: center;
+    padding: 20px;
+    color: var(--input-text);
+    font-style: italic;
+}
+
+.selected-friend {
+    background-color: var(--dark-color-b);
+    padding: 8px 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.selected-friend span {
+    font-size: 0.9rem;
+    color: var(--input-text);
+}
+
+.chat-container {
+    flex: 1;
+    background: var(--dark-color-b);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+}
+
+.chat-header {
+    background: var(--dark-color-a);
+    color: var(--light-color);
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #303235;
+}
+
+.chat-header h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.chat-header h1 i {
+    color: var(--success-color);
+    margin-right: 5px;
+}
+
+.chat-main {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+}
+
+.chat-messages {
+    width: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages .message {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    color: var(--light-color);
+    background-color: #3a3c40;
+    overflow-wrap: break-word;
+    max-width: 80%;
+    align-self: flex-start;
+}
+
+.chat-messages .message.self {
+    background-color: var(--success-color);
+    align-self: flex-end;
+}
+
+.chat-messages .message .meta {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.chat-messages .message .meta .time {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.chat-form-container {
+    padding: 20px;
+    background-color: var(--dark-color-a);
+    border-top: 1px solid #303235;
+}
+
+.chat-form-container form {
+    display: flex;
+}
+
+.chat-form-container input[type='text'] {
+    font-size: 16px;
+    padding: 12px;
+    height: 45px;
+    flex: 1;
+    background: var(--input-bg);
+    border: none;
+    border-radius: 6px 0 0 6px;
+    color: var(--light-color);
+}
+
+.chat-form-container input[type='text']:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.chat-form-container input[type='text']::placeholder {
+    color: var(--input-text);
+}
+
+.chat-form-container input[type='text']:focus {
+    outline: none;
+}
+
+.chat-form-container .btn {
+    cursor: pointer;
+    padding: 12px 15px;
+    background: var(--button-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 0 6px 6px 0;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.2s ease-in-out;
+}
+
+.chat-form-container .btn:hover:not(:disabled) {
+    background: var(--button-hover);
+}
+
+.chat-form-container .btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.error-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--error-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 350px;
+    z-index: 1000;
+    transform: translateY(150%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.error-notification.show {
+    transform: translateY(0);
+}
+
+.error-notification p {
+    margin-right: 12px;
+}
+
+.error-notification button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.friend-update-notification {

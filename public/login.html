@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Secure Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: var(--dark-color-b);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--input-bg);
+            border: none;
+            border-radius: 6px;
+            color: var(--light-color);
+            font-size: 16px;
+        }
+        
+        .login-btn {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--button-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1><i class="fas fa-lock"></i> Secure Discord Chat</h1>
+            <p>Login to start encrypted messaging</p>
+        </div>
+        <form class="login-form" id="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="discord-id">Your Discord User ID</label>
+                <input type="text" id="discord-id" required placeholder="Enter your Discord User ID">
+            </div>
+            <div class="form-group">
+                <label for="encryption-key">Encryption Key</label>
+                <input type="password" id="encryption-key" required placeholder="Enter shared encryption key" value="amizayusoff">
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+    </div>
+
+    <!-- Include Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const discordId = document.getElementById('discord-id').value;
+            const encryptionKey = document.getElementById('encryption-key').value;
+            
+            // Store in session storage
+            sessionStorage.setItem('username', username);
+            sessionStorage.setItem('discordId', discordId);
+            sessionStorage.setItem('encryptionKey', encryptionKey);
+            
+            // Redirect to chat
+            window.location.href = '/index.html';
+        });
+    </script>
+</body>
+</html> 

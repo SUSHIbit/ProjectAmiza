@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Friends sidebar -->
+        <div class="friends-sidebar" id="friends-sidebar">
+            <div class="friends-header">
+                <h2>Discord Friends</h2>
+                <button id="refresh-friends"><i class="fas fa-sync"></i></button>
+            </div>
+            <div class="friends-search">
+                <input type="text" id="friend-search" placeholder="Search friends...">
+            </div>
+            <div class="friends-list" id="friends-list">
+                <!-- Friends will be loaded here dynamically -->
+                <div class="loading-friends">Loading friends...</div>
+            </div>
+        </div>
+
+        <!-- Chat area -->
+        <div class="chat-container">
+            <header class="chat-header">
+                <h1><i class="fas fa-lock"></i> Secure Discord Chat</h1>
+                <div id="selected-friend" class="selected-friend">
+                    <span>Select a friend to start chatting</span>
+                </div>
+            </header>
+            <main class="chat-main">
+                <div class="chat-messages" id="messages">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+            </main>
+            <div class="chat-form-container">
+                <form id="chat-form">
+                    <input
+                        id="msg"
+                        type="text"
+                        placeholder="Type a message..."
+                        required
+                        autocomplete="off"
+                        disabled
+                    />
+                    <button class="btn" disabled><i class="fas fa-paper-plane"></i> Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="error-notification" class="error-notification">
+        <p id="error-text"></p>
+        <button id="close-error"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Include Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <!-- Include Socket.io client -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Include our custom JS -->
+    <script src="main.js"></script>
+</body>
+</html> 
