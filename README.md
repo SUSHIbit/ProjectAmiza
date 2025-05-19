@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Secure Discord Chat
 
 A secure chat application that uses Discord DMs as a transport layer for encrypted messages. This application allows two users to communicate securely by encrypting messages sent through Discord direct messages.
@@ -142,3 +143,6 @@ Once deployed, share the URL with your friends. Each person will need:
 ## License
 
 MIT 
+=======
+# discord-secure-chat
+>>>>>>> 1a5f103224b31f16a703c98231431610c7941f2c
